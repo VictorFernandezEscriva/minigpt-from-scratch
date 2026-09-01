@@ -212,9 +212,7 @@ Resultados aproximados:
 Para la MSE del modelo `ŷ = wx`:
 
 $$
-\frac{\partial L}{\partial w}
-=
-\frac{1}{N}\sum_{i=1}^{N}2x_i(wx_i-y_i)
+\frac{\partial L}{\partial w} = \frac{1}{N}\sum_{i=1}^{N} 2x_i(wx_i-y_i)
 $$
 
 - Gradiente positivo: al aumentar `w`, aumenta la loss; reducimos `w`.
