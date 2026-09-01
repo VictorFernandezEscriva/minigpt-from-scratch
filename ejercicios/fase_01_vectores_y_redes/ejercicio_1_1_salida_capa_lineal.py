@@ -13,7 +13,15 @@ x = np.array([2.0, 3.0])
 W = np.array([[1.0, -1.0], [2.0, 4.0]])
 b = np.array([0.5, -0.5])
 
-# TODO: calcula y mediante una multiplicación matricial y suma el bias.
-y = None
+y = x @ W + b
 
-# TODO: añade una comprobación del resultado esperado.
+print(f"x shape: {x.shape}")
+print(f"W shape: {W.shape}")
+print(f"b shape: {b.shape}")
+print(f"y shape: {y.shape}")
+print(f"y: {y}")
+
+expected_y = np.array([8.5, 9.5])
+
+assert y.shape == (2,)
+assert np.allclose(y, expected_y)
