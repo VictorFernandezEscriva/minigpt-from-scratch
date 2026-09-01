@@ -1,0 +1,26 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Tests y herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# VS Code
+.vscode/
+
+# Modelos y checkpoints
+checkpoints/
+*.pt
+*.pth
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
