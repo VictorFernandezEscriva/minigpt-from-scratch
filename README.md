@@ -100,9 +100,9 @@ Un modelo de regresión produce una cantidad continua. No tiene por qué produci
 
 El modelo es:
 
-\[
+$$
 \hat y = wx
-\]
+$$
 
 - `x`: entrada.
 - `w`: parámetro entrenable.
@@ -125,17 +125,17 @@ En estos datos ideales, `w = 3` reproduce todos los ejemplos.
 
 El error cuadrático de un ejemplo es:
 
-\[
+$$
 (\hat y-y)^2
-\]
+$$
 
 El cuadrado evita que errores positivos y negativos se cancelen y penaliza más los errores grandes.
 
 El error cuadrático medio o MSE es:
 
-\[
+$$
 L(w)=\frac{1}{N}\sum_{i=1}^{N}(wx_i-y_i)^2
-\]
+$$
 
 - MSE alta: malas predicciones.
 - MSE baja: predicciones próximas a los targets.
@@ -147,9 +147,9 @@ La primera estrategia consiste en probar muchos valores de `w`, calcular su MSE 
 
 Con el ejemplo ruidoso `(8, 25)`, ningún `w` acierta todos los puntos. El óptimo continuo es:
 
-\[
+$$
 w^*=\frac{\sum x_i y_i}{\sum x_i^2}=3.033613445\ldots
-\]
+$$
 
 ### Ejercicio 0.1
 
@@ -211,11 +211,11 @@ Resultados aproximados:
 
 Para la MSE del modelo `ŷ = wx`:
 
-\[
+$$
 \frac{\partial L}{\partial w}
 =
 \frac{1}{N}\sum_{i=1}^{N}2x_i(wx_i-y_i)
-\]
+$$
 
 - Gradiente positivo: al aumentar `w`, aumenta la loss; reducimos `w`.
 - Gradiente negativo: al aumentar `w`, baja la loss; aumentamos `w`.
@@ -223,9 +223,9 @@ Para la MSE del modelo `ŷ = wx`:
 
 Gradient descent actualiza en dirección contraria al gradiente:
 
-\[
+$$
 w_{nuevo}=w_{actual}-\eta\frac{\partial L}{\partial w}
-\]
+$$
 
 `η` es el learning rate:
 
@@ -487,9 +487,9 @@ Medidas habituales contra overfitting: más datos, modelo más pequeño, regular
 
 En una capa lineal:
 
-\[
+$$
 Y=XW+b
-\]
+$$
 
 Si `X` contiene `B` ejemplos con `D_in` features y la capa produce `D_out` features:
 
@@ -506,9 +506,9 @@ Las dimensiones interiores de la multiplicación deben coincidir.
 
 Una neurona combina entradas mediante pesos y bias:
 
-\[
+$$
 z=w_1x_1+w_2x_2+\cdots+w_nx_n+b
-\]
+$$
 
 El bias permite desplazar la función. Sin bias, una regresión lineal está obligada a pasar por el origen.
 
@@ -546,13 +546,13 @@ b = [0.5, -0.5]
 
 Interpretando las columnas de `W` como neuronas:
 
-\[
+$$
 y_1=2(1)+3(2)+0.5=8.5
-\]
+$$
 
-\[
+$$
 y_2=2(-1)+3(4)-0.5=9.5
-\]
+$$
 
 ```python
 import numpy as np
@@ -859,9 +859,9 @@ Al indexarla con el token actual obtenemos un vector de logits: una puntuación 
 
 Si los logits son `z`, softmax calcula:
 
-\[
+$$
 p_i=\frac{e^{z_i}}{\sum_j e^{z_j}}
-\]
+$$
 
 - Los logits pueden ser negativos y no suman 1.
 - Las probabilidades están entre 0 y 1 y suman 1.
@@ -871,9 +871,9 @@ p_i=\frac{e^{z_i}}{\sum_j e^{z_j}}
 
 Para el token correcto `y`:
 
-\[
+$$
 L=-\log p(y)
-\]
+$$
 
 Asignar alta probabilidad al token correcto reduce la loss. `torch.nn.functional.cross_entropy` recibe logits, no probabilidades; internamente aplica una versión numéricamente estable de log-softmax.
 
@@ -938,9 +938,9 @@ Los tokens con funciones parecidas pueden acabar cerca en el espacio vectorial p
 
 Self-attention por sí sola no conoce el orden. Sumamos un vector de posición al vector del token:
 
-\[
+$$
 x=embedding(token)+embedding(posición)
-\]
+$$
 
 Ambos deben tener la misma dimensión `C` para poder sumarlos.
 
@@ -984,9 +984,9 @@ Cada token crea tres representaciones:
 
 Las similitudes entre queries y keys producen pesos de atención. Esos pesos mezclan values.
 
-\[
+$$
 Attention(Q,K,V)=softmax\left(\frac{QK^T}{\sqrt{d_k}}+mask\right)V
-\]
+$$
 
 La división por `√d_k` evita que productos grandes saturen softmax.
 
@@ -1092,9 +1092,9 @@ n_embd → 4 × n_embd → GELU → n_embd
 
 En vez de reemplazar `x`, cada subcapa aprende una corrección:
 
-\[
+$$
 x_{nuevo}=x+f(x)
-\]
+$$
 
 Esto facilita el flujo de gradientes y permite redes profundas.
 
